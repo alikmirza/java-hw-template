@@ -19,37 +19,39 @@ public class HW03Done {
         schedule[5][1]="go to courses;";
         schedule[6][0]="Saturday ";
         schedule[6][1]="take a break and relax";
-        Boolean exit=true;
+        System.out.print("Please, input the day of the week: \n");
+        boolean exit=true;
         while (exit){
             Scanner in =new Scanner(System.in);
             String day=in.nextLine();
-        switch (day){
+            String dayCheck = day.toLowerCase();
+            switch (dayCheck.trim()){
 
-            case "Sunday":
+            case "sunday":
             System.out.println("Your task for "+schedule[0][0]+": "+schedule[0][1]);
             break;
 
-            case "Monday":
+            case "monday":
             System.out.println("Your task for "+schedule[1][0]+": "+schedule[1][1]);
             break;
 
-            case "Tuesday":
+            case "tuesday":
             System.out.println("Your task for "+schedule[2][0]+": "+schedule[2][1]);
             break;
 
-            case "Wednesday":
+            case "wednesday":
             System.out.println("Your task for "+schedule[3][0]+": "+schedule[3][1]);
             break;
 
-            case "Thursday":
+            case "thursday":
             System.out.println("Your task for "+schedule[4][0]+": "+schedule[4][1]);
             break;
 
-            case "Friday":
+            case "friday":
             System.out.println("Your task for "+schedule[5][0]+": "+schedule[5][1]);
             break;
 
-            case "Saturday":
+            case "saturday":
             System.out.println("Your task for "+schedule[6][0]+": "+schedule[6][1]);
             break;
 
