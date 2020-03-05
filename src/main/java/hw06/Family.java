@@ -4,20 +4,20 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 public class Family {
-    private Human father;
-    private Human mother;
-    private Human[] children;
-    Family(){
-
-    }
 
     static {
         System.out.println("Family class is downloading...");
     }
 
     {
-        System.out.println("The Object of type of Family is creating...");
+        System.out.println("The Object of Family is creating...");
     }
+
+    private Human father;
+    private Human mother;
+    private Human[] children;
+
+    Family(){ }
 
     Family(Human father, Human mother){
         this.father=father;
@@ -75,10 +75,14 @@ public class Family {
     }
 
 
-    PrintStream countFamily(){
-        if (children==null) return System.out.printf("The number of family members: %d\n",2);
-        return System.out.printf("The number of family members: %d\n",children.length+2);
+    int countFamily(){
+        if (children==null){
+            System.out.print("The number of family members: "); return 2;
+        }
+        System.out.print("The number of family members: ");
+        return children.length+2;
     }
+
 
     @Override
     public String toString(){
@@ -90,7 +94,7 @@ public class Family {
 
     @Override
     protected void finalize(){
-        System.out.println("this");
+        System.out.println("Finalize method of Family class");
     }
 
 

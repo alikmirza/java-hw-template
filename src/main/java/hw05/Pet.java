@@ -11,6 +11,27 @@ public class Pet {
     private int trickLevel;
     private String[] habits;
 
+
+    Pet(){ }
+
+
+    Pet(String species, String nickname){
+        this.species =species;
+        this.nickname=nickname;
+    }
+
+
+    Pet(String species, String nickname, int age, int trickLevel, String[] habits){
+        this.species=species;
+        this.nickname=nickname;
+        this.age=age;
+        this.trickLevel=trickLevel;
+        this.habits=habits;
+    }
+
+
+
+
     String getSpecies() { return species; }
 
     public String getNickname() { return nickname; }
@@ -32,27 +53,6 @@ public class Pet {
     public void setHabits(String[] habits) { this.habits = habits; }
 
 
-    @Override
-    public String toString(){
-        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",species, nickname, age, trickLevel, Arrays.toString(habits));
-    }
-
-    public Pet(String species, String nickname){
-        this.species =species;
-        this.nickname=nickname;
-
-    }
-
-    Pet(String species, String nickname, int age, int trickLevel, String[] habits){
-        this.species=species;
-        this.nickname=nickname;
-        this.age=age;
-        this.trickLevel=trickLevel;
-        this.habits=habits;
-    }
-
-
-    public Pet(){ }
 
     public  void eat(){
         System.out.print("I am eating \n");
@@ -63,6 +63,21 @@ public class Pet {
     public void foul(){
         System.out.print("I need to cover it up\n");
     }
+
+    String trickLevel(int trickLevel) {
+        if (trickLevel > 50) {
+            return "He is very sly";
+        } else
+            return "He is almost not sly";
+    }
+
+
+
+    @Override
+    public String toString(){
+        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",species, nickname, age, trickLevel, Arrays.toString(habits));
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -76,18 +91,12 @@ public class Pet {
                 Arrays.equals(habits, pet.habits);
     }
 
+
     @Override
     public int hashCode() {
         int result = Objects.hash(species, nickname, age, trickLevel);
         result = 31 * result + Arrays.hashCode(habits);
         return result;
     }
-
-    /* public void Trick(){
-        if(trickLevel>50){
-            System.out.printf("he is very sly: %d",trickLevel);}
-        else System.out.printf("he is almost not sly: %d",trickLevel);
-
-    }*/
 
 }

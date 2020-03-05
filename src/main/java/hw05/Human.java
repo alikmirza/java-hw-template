@@ -14,6 +14,27 @@ public class Human {
     private Family family;
 
 
+    Human() { }
+
+
+    Human(String name, String surname, int year){
+        this.name=name;
+        this.surname=surname;
+        this.year=year;
+
+    }
+
+
+    Human(String name, String surname, int year, int iq,String [][] schedule, Pet pet){
+        this.name=name;
+        this.surname=surname;
+        this.year=year;
+        this.iq=iq;
+        this.pet=pet;
+        this.schedule=schedule;
+
+
+    }
 
 
     String getName() { return name; }
@@ -53,27 +74,10 @@ public class Human {
         this.family = family;
     }
 
-    public Human() { }
-
-
-    Human(String name, String surname, int year){
-        this.name=name;
-        this.surname=surname;
-        this.year=year;
-
+    void describePet() {
+        System.out.printf("I have a %s he is %d years old, %s\n", pet.getSpecies(), pet.getAge(), pet.trickLevel(pet.getTrickLevel()));
     }
 
-
-    Human(String name, String surname, int year, int iq,String [][] schedule, Pet pet){
-        this.name=name;
-        this.surname=surname;
-        this.year=year;
-        this.iq=iq;
-        this.pet=pet;
-        this.schedule=schedule;
-
-
-    }
 
 
     @Override
@@ -97,10 +101,4 @@ public class Human {
         result = 31 * result + Arrays.hashCode(schedule);
         return result;
     }
-
-
-    public void describePet() {
-        System.out.printf("I have a %s he is %d years old, he is very sly %d\n", pet.getSpecies(), pet.getAge(), pet.getTrickLevel());
-    }
-
 }

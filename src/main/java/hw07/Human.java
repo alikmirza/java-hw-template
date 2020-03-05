@@ -1,17 +1,8 @@
-package hw06;
+package hw07;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Human {
-
-    static {
-        System.out.println("Human class is downloading...");
-    }
-
-    {
-        System.out.println("The Object of Human is creating...");
-    }
 
     private String name;
     private String surname;
@@ -22,15 +13,6 @@ public class Human {
     private Family family;
 
 
-    Human() { }
-
-
-    Human(String name, String surname, int year){
-        this.name=name;
-        this.surname=surname;
-        this.year=year;
-
-    }
 
 
     Human(String name, String surname, int year, int iq,String [][] schedule, Pet pet){
@@ -85,7 +67,7 @@ public class Human {
 
     public void describePet() {
         System.out.printf("I have a %s he is %d years old, %s\n",
-                pet.getSpecies(), pet.getAge(), pet.trickLevel(pet.getTrickLevel()));
+               getPet(), pet.getAge(), pet.trickLevel(pet.getTrickLevel()));
     }
 
 
@@ -93,30 +75,7 @@ public class Human {
     @Override
     public String toString(){
         return String.format("Human{name='%s', surname='%s', year='%d', iq=%d', Schedule=%s, %s",
-                name, surname, year, iq,Arrays.deepToString(schedule),pet);
+                name, surname, year, iq, Arrays.deepToString(schedule),pet);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Human human = (Human) o;
-        return year == human.year &&
-                iq == human.iq &&
-                Objects.equals(name, human.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(name, surname, year, iq, pet, family);
-        result = 31 * result + Arrays.hashCode(schedule);
-        return result;
-    }
-
-    @Override
-    protected void finalize(){
-        System.out.println("Finalize method of Human class");
-    }
-
 
 }

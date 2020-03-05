@@ -5,18 +5,37 @@ import java.util.Objects;
 
 public class Pet {
 
+    static {
+        System.out.println("Pet class is downloading...");
+    }
+
+    {
+        System.out.println("The Object of Pet is creating...");
+    }
+
+
+
     private String species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    static {
-        System.out.println("Pet class is downloading...");
+
+    Pet(){ }
+
+    public Pet(String species, String nickname){
+        this.species =species;
+        this.nickname=nickname;
+
     }
 
-    {
-        System.out.println("The Object of type of Pet is creating...");
+    Pet(String species, String nickname, int age, int trickLevel, String[] habits){
+        this.species=species;
+        this.nickname=nickname;
+        this.age=age;
+        this.trickLevel=trickLevel;
+        this.habits=habits;
     }
 
 
@@ -41,29 +60,8 @@ public class Pet {
     public void setHabits(String[] habits) { this.habits = habits; }
 
 
-    @Override
-    public String toString(){
-        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",species, nickname, age, trickLevel, Arrays.toString(habits));
-    }
 
-    public Pet(String species, String nickname){
-        this.species =species;
-        this.nickname=nickname;
-
-    }
-
-    Pet(String species, String nickname, int age, int trickLevel, String[] habits){
-        this.species=species;
-        this.nickname=nickname;
-        this.age=age;
-        this.trickLevel=trickLevel;
-        this.habits=habits;
-    }
-
-
-    Pet(){ }
-
-    public  void eat(){
+    public void eat(){
         System.out.print("I am eating \n");
     }
     public void respond(){
@@ -72,6 +70,20 @@ public class Pet {
     public void foul(){
         System.out.print("I need to cover it up\n");
     }
+
+
+    String trickLevel(int trickLevel) {
+        if (trickLevel > 50) {
+            return "He is very sly";
+        } else
+            return "He is almost not sly";
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",species, nickname, age, trickLevel, Arrays.toString(habits));
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -94,7 +106,7 @@ public class Pet {
 
     @Override
     protected void finalize(){
-        System.out.println("this");
+        System.out.println("Finalize method of Pet Class");
     }
 
 }

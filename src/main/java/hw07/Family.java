@@ -1,6 +1,5 @@
-package hw05;
+package hw07;
 
-import java.io.PrintStream;
 import java.util.Arrays;
 
 public class Family {
@@ -30,18 +29,6 @@ public class Family {
         }
     }
 
-    //delete with index
-//    public boolean deleteChild(int index){
-//        if (children == null || index>children.length-1) return false;
-//        Human[] tempChildren = new Human[children.length-1];
-//        for (int i = 0, j = 0; i<children.length;i++) {
-//            if ( i != index)
-//                tempChildren[j++] = children[i];
-//        }
-//        children = tempChildren;
-//        return true;
-//    }
-
     boolean deleteChild(Human child){
         if (children == null || child == null) return false;
         int childIndex = -1;
@@ -65,7 +52,6 @@ public class Family {
     }
 
 
-
     int countFamily(){
         if (children==null){
             System.out.print("The number of family members: "); return 2;
@@ -82,7 +68,4 @@ public class Family {
                 mother.getName(),mother.getSurname(),mother.getYear(),
                 Arrays.toString(children));
     }
-
-
-
 }
