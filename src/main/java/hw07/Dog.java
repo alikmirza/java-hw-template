@@ -7,14 +7,14 @@ public class Dog extends Pet implements SpecialMethod {
 
     Dog(String nickname, int age, int trickLevel, String[] habits) {
         super( nickname, age, trickLevel, habits);
+        this.species=Species.Dog;
     }
-
 
 
     @Override
     public String toString(){
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                Species.Dog.name(), getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
+                species, getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
     }
 
     @Override
@@ -22,13 +22,6 @@ public class Dog extends Pet implements SpecialMethod {
         System.out.printf("Hello owner. I am - %s\n",getNickname());
     }
 
-    @Override
-    public String trickLevel(int trickLevel) {
-        if (trickLevel > 50) {
-            return "He is very sly";
-        } else
-            return "He is almost not sly";
-    }
 
     @Override
     public void foul() {

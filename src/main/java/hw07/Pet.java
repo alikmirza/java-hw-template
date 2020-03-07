@@ -5,12 +5,18 @@ import java.util.Objects;
 import java.util.Set;
 
 public abstract class Pet {
-
+    protected Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
+    Pet( String nickname, int age, int trickLevel, String[] habits){
+        this.nickname=nickname;
+        this.age=age;
+        this.trickLevel=trickLevel;
+        this.habits=habits;
+    }
 
 
     String getNickname() { return nickname; }
@@ -30,19 +36,14 @@ public abstract class Pet {
     public void setHabits(String[] habits) { this.habits = habits; }
 
 
-
-
-    Pet( String nickname, int age, int trickLevel, String[] habits){
-        this.nickname=nickname;
-        this.age=age;
-        this.trickLevel=trickLevel;
-        this.habits=habits;
-    }
-
-
     public  void eat(){ System.out.println("I am eating"); }
 
     public abstract void respond();
 
-    public abstract String trickLevel(int trickLevel);
+    protected String trickLevel(int trickLevel) {
+        if (trickLevel > 50) {
+            return "He is very sly";
+        } else
+            return "He is almost not sly";
+    }
 }

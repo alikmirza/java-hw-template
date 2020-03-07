@@ -7,6 +7,7 @@ public class DomesticCat extends Pet implements SpecialMethod {
 
     DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
         super( nickname, age, trickLevel, habits);
+        this.species=Species.DomesticCat;
     }
 
 
@@ -14,7 +15,7 @@ public class DomesticCat extends Pet implements SpecialMethod {
     @Override
     public String toString(){
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                Species.DomesticCat.name(), getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
+                species, getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
     }
 
     @Override
@@ -22,13 +23,6 @@ public class DomesticCat extends Pet implements SpecialMethod {
         System.out.printf("Hello owner. I am - %s\n",getNickname());
     }
 
-    @Override
-    public String trickLevel(int trickLevel) {
-        if (trickLevel > 50) {
-            return "He is very sly";
-        } else
-            return "He is almost not sly";
-    }
 
     @Override
     public void foul() {

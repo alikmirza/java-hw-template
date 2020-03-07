@@ -67,7 +67,7 @@ public class Human {
 
     public void describePet() {
         System.out.printf("I have a %s he is %d years old, %s\n",
-               getPet(), pet.getAge(), pet.trickLevel(pet.getTrickLevel()));
+               getPet().species, pet.getAge(), pet.trickLevel(pet.getTrickLevel()));
     }
 
 
