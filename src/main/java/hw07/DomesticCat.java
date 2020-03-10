@@ -7,7 +7,7 @@ public class DomesticCat extends Pet implements SpecialMethod {
 
     DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
         super( nickname, age, trickLevel, habits);
-        this.species=Species.DomesticCat;
+        this.species= Species.DomesticCat;
     }
 
 

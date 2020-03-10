@@ -1,6 +1,7 @@
 package hw08;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Pet {
     protected Species species;
@@ -23,15 +24,7 @@ public abstract class Pet {
 
     int getTrickLevel() { return trickLevel; }
 
-    Object[] getHabits() { return habits.toArray(); }
-
-    public void setNickname(String nickname) { this.nickname = nickname; }
-
-    public void setAge(int age) { this.age = age; }
-
-    public void setTrickLevel(int trickLevel) { this.trickLevel = trickLevel; }
-
-    public void setHabits(HashSet<String> habits) { this.habits = habits; }
+    HashSet<String> getHabits() { return habits; }
 
 
     public  void eat(){ System.out.println("I am eating"); }

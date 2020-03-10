@@ -2,6 +2,7 @@ package hw08;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Dog extends Pet implements SpecialMethod {
 
@@ -15,7 +16,7 @@ public class Dog extends Pet implements SpecialMethod {
     @Override
     public String toString(){
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                species, getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
+                species, getNickname(), getAge(), getTrickLevel(), getHabits());
     }
 
     @Override

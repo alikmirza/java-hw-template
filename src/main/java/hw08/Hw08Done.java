@@ -3,6 +3,7 @@ package hw08;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Hw08Done {
     public static void main(String[] args) {
@@ -40,19 +41,18 @@ public class Hw08Done {
         Dog dog = new Dog("Bob",5,30, habitsForDog);
         RoboCat roboCat=new RoboCat("Cap",4,95, habitsForRoboCat);
 
-        Man man = new Man("Jack","Parkinson",1980,70, schedule1,fish);
-        Woman woman = new Woman("Jane","Potter", 1970,75, schedule2, dog);
-        Man children = new Man("Nick","Parkinson",1999,90, schedule3, roboCat);
+        Set<Pet> pets=new HashSet<>();
+        pets.add(fish);
+        pets.add(dog);
+        pets.add(roboCat);
+
+        Man man = new Man("Jack","Parkinson",1980,70, schedule1);
+        Woman woman = new Woman("Jane","Potter", 1970,75, schedule2);
+        Man children = new Man("Nick","Parkinson",1999,90, schedule3);
 
 
-        Family family=new Family(man,woman);
-        System.out.println(family.countFamily());
-        System.out.println(family);
+        Family family=new Family(man,woman,pets);
         family.addChild(children);
-        System.out.println(family.countFamily());
-        System.out.println(family);
-        family.deleteChild(children);
-        System.out.println(family.countFamily());
         System.out.println(family);
     }
 }

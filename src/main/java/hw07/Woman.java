@@ -2,8 +2,8 @@ package hw07;
 
 public final class Woman extends Human {
 
-    Woman(String name, String surname, int year, int iq, String[][] schedule, Pet pet) {
-        super(name, surname, year, iq, schedule, pet);
+    Woman(String name, String surname, int year, int iq, String[][] schedule) {
+        super(name, surname, year, iq, schedule);
     }
 
     void makeup(){
@@ -13,7 +13,7 @@ public final class Woman extends Human {
     @Override
     public void describePet(){
         System.out.printf("Hi girls, I have a %s he is %d years old, %s\n",
-                getPet(), getPet().getAge(), getPet().trickLevel(getPet().getTrickLevel()));
+                family.getPet(), family.getPet().getAge(), family.getPet().trickLevel(family.getPet().getTrickLevel()));
     }
 
 

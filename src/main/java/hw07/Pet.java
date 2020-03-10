@@ -1,9 +1,5 @@
 package hw07;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Set;
-
 public abstract class Pet {
     protected Species species;
     private String nickname;
@@ -26,14 +22,6 @@ public abstract class Pet {
     int getTrickLevel() { return trickLevel; }
 
     String[] getHabits() { return habits; }
-
-    public void setNickname(String nickname) { this.nickname = nickname; }
-
-    public void setAge(int age) { this.age = age; }
-
-    public void setTrickLevel(int trickLevel) { this.trickLevel = trickLevel; }
-
-    public void setHabits(String[] habits) { this.habits = habits; }
 
 
     public  void eat(){ System.out.println("I am eating"); }

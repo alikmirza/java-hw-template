@@ -1,18 +1,36 @@
 package hw07;
 
 import java.util.Arrays;
+import java.util.Set;
 
 public class Family {
     private Human father;
     private Human mother;
     private Human[] children;
+    private Pet pet;
 
+    Human getFather() {
+        return father;
+    }
 
-    Family(Human father, Human mother){
+    Human getMother() {
+        return mother;
+    }
+
+    public Human[] getChildren() {
+        return children;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    Family(Human father, Human mother, Pet pet){
         this.father=father;
         this.mother=mother;
         this.mother.setFamily(this);
         this.father.setFamily(this);
+        this.pet=pet;
     }
 
     void addChild(Human newChild){
@@ -63,9 +81,9 @@ public class Family {
 
     @Override
     public String toString(){
-        return String.format("Human{Father name='%s', Father surname='%s', year='%d', Mother name='%s', Mother surname='%s', year='%d', Children='%s'}",
+        return String.format("Human{Father name='%s', Father surname='%s', year='%d', Mother name='%s', Mother surname='%s', year='%d', Children='%s', Pet=[%s]}",
                 father.getName(),father.getSurname(),father.getYear(),
                 mother.getName(),mother.getSurname(),mother.getYear(),
-                Arrays.toString(children));
+                Arrays.toString(children),pet);
     }
 }

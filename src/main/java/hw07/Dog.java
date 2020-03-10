@@ -7,7 +7,7 @@ public class Dog extends Pet implements SpecialMethod {
 
     Dog(String nickname, int age, int trickLevel, String[] habits) {
         super( nickname, age, trickLevel, habits);
-        this.species=Species.Dog;
+        this.species= Species.Dog;
     }
 
 

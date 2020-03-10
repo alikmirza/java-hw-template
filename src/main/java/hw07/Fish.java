@@ -6,7 +6,7 @@ public  class Fish extends Pet {
 
     Fish(String nickname, int age, int trickLevel, String[] habits) {
         super( nickname, age, trickLevel, habits);
-        this.species=Species.Fish;
+        this.species= Species.Fish;
     }
 
 

@@ -2,6 +2,7 @@ package hw08;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 public  class Fish extends Pet {
 
@@ -15,7 +16,7 @@ public  class Fish extends Pet {
     @Override
     public String toString(){
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                species,  getNickname(), getAge(), getTrickLevel(), Arrays.toString(getHabits()));
+                species,  getNickname(), getAge(), getTrickLevel(), getHabits());
     }
 
     @Override
