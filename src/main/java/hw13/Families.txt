@@ -1,0 +1,42 @@
+[ {
+  "father" : {
+    "name" : "John",
+    "surname" : "Claus",
+    "birthDate" : 159393600000,
+    "iq" : 0,
+    "schedule" : {
+      "Wednesday" : "Football",
+      "Tuesday" : "Hiking"
+    }
+  },
+  "mother" : {
+    "name" : "Emmy",
+    "surname" : "Winehouse",
+    "birthDate" : 448574400000,
+    "iq" : 0,
+    "schedule" : {
+      "Wednesday" : "Football",
+      "Tuesday" : "Hiking"
+    }
+  },
+  "children" : [ ],
+  "pets" : [ {
+    "species" : "RoboCat",
+    "nickname" : "Cap",
+    "age" : 4,
+    "trickLevel" : 95,
+    "habits" : [ "Light", "Charge", "Fight" ]
+  }, {
+    "species" : "Dog",
+    "nickname" : "Bob",
+    "age" : 5,
+    "trickLevel" : 30,
+    "habits" : [ "Sleep", "Eat", "Run" ]
+  }, {
+    "species" : "Fish",
+    "nickname" : "Nemo",
+    "age" : 1,
+    "trickLevel" : 70,
+    "habits" : [ "Eat", "Flip", "Swim" ]
+  } ]
+} ]

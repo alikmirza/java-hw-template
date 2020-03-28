@@ -1,14 +1,14 @@
-package hw12.utils;
+package hw13.utils;
 
-import hw12.controller.FamilyController;
-import hw12.domain.*;
-import hw12.exception.FamilyOverflowException;
+import hw13.controller.FamilyController;
+import hw13.exception.FamilyOverflowException;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.*;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Console {
 
@@ -47,6 +47,16 @@ public class Console {
         familyGenerator.createWoman(name,surname,birthDate,iq);
     }
 
+    public void enterInfoOfChild(){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Please, input name, surname, birthday(ex: 11/11/1990), iq of Child and input enter after each of them)");
+        String name=in.nextLine();
+        String surname=in.nextLine();
+        long birthDate = parseStringToLocalDate(in.nextLine());
+        int iq=in.nextInt();
+        familyGenerator.createMan(name,surname,birthDate,iq);
+    }
+
 
 
     public void run(){
@@ -73,7 +83,7 @@ public class Console {
         int number=in.nextInt();
         switch (number){
             case 1:
-                familyGenerator.generate();
+                familyController.writeFamilies(familyGenerator.generate());
                 break;
             case 2:
                 System.out.println(familyController.displayAllFamilies());
@@ -146,7 +156,7 @@ public class Console {
                 else if (input==2){
                     System.out.println("Enter the id of family: ");
                     int id=in.nextInt();
-                    enterInfoOfFather();
+                    enterInfoOfChild();
                     familyController.adoptChild(id,familyGenerator.getAnotherMan());
                 }else return;
                 break;

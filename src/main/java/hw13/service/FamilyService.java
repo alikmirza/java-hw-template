@@ -1,20 +1,18 @@
-package hw12.service;
+package hw13.service;
 
-import hw12.dao.CollectionFamilyDao;
-import hw12.dao.FamilyDao;
-import hw12.domain.Family;
-import hw12.domain.Human;
-import hw12.domain.Pet;
+import hw13.dao.DaoFamilyFile;
+import hw13.dao.FamilyDao;
+import hw13.domain.Family;
+import hw13.domain.Human;
+import hw13.domain.Pet;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class FamilyService<A> {
 
-    private FamilyDao<Family> familyDao = new CollectionFamilyDao();
+    private FamilyDao<Family> familyDao=new DaoFamilyFile("src\\main\\java\\hw13\\Families.txt");
 
 
     public Collection<String> getAllFamilies(){
@@ -54,20 +52,25 @@ public class FamilyService<A> {
 
     public void createNewFamily(Human father, Human mother){
         Family family=new Family(father,mother);
-        saveFamily(family);
+        List<Family>list= new ArrayList<>(familyDao.getAllFamilies());
+        list.add(family);
+        writeFamilies(list);
     }
 
-    public Family bornChild(int index, String boy, String girl){
+    public void bornChild(int index, String boy, String girl){
         Human child;
         int random= (int) (Math.random()*2)+1;
         if (random==1) child = new Human(boy);
         else child = new Human(girl);
-
-        return familyDao.getFamilyByIndex(index).addChild(child);
+        List<Family> list= new ArrayList<>(familyDao.getAllFamilies());
+        list.get(index).addChild(child);
+        writeFamilies(list);
     }
 
-    public Family adoptChild(int index, Human human){
-        return familyDao.getFamilyByIndex(index).addChild(human);
+    public void adoptChild(int index, Human human){
+        List<Family> list=new ArrayList<>(familyDao.getAllFamilies());
+        list.get(index).addChild(human);
+        writeFamilies(list);
     }
 
     public int count(){
@@ -75,28 +78,34 @@ public class FamilyService<A> {
     }
 
     public Collection<String> getPets(int index){
-        return familyDao.getFamilyByIndex(index).getPet().stream().map(Pet::toString).collect(Collectors.toList());
+        return familyDao.getFamilyByIndex(index).getPets().stream().map(Pet::toString).collect(Collectors.toList());
     }
 
     public void addPet(int index, Pet pet){
-        familyDao.getFamilyByIndex(index).getPet().add(pet);
+        familyDao.getFamilyByIndex(index).getPets().add(pet);
     }
 
     public void deleteAllChildrenOlderThen(int age){
         List<Human> childrenForDelete = new ArrayList<>();
-        familyDao.getAllFamilies().stream().peek(family -> family.getChildren()
+        List<Family> list=new ArrayList<>(familyDao.getAllFamilies());
+        list.stream().peek(family -> family.getChildren()
                 .stream()
                 .filter(human -> human.getBirthDate()>age)
                 .forEach(childrenForDelete::add))
                 .forEach(family -> {
                     family.getChildren().removeAll(childrenForDelete);
                     childrenForDelete.clear();
-        });
+                    writeFamilies(list);
+                });
     }
 
     public Collection<String> displayAllFamilies(){
         AtomicInteger count = new AtomicInteger(1);
         return familyDao.getAllFamilies().stream().map(family -> family.prettyFormat(count.getAndIncrement())).collect(Collectors.toList());
+    }
+
+    public void writeFamilies(Collection<Family> families){
+        familyDao.createAll(families);
     }
 
 }
