@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class FamilyService<A> {
+public class FamilyService {
 
     private FamilyDao<Family> familyDao = new CollectionFamilyDao();
 

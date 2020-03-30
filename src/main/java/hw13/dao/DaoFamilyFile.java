@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class DaoFamilyFile implements FamilyDao {
+public class DaoFamilyFile implements FamilyDao<Family> {
 
 
     private File file;
@@ -15,7 +15,6 @@ public class DaoFamilyFile implements FamilyDao {
         this.file=new File(filename);
     }
 
-    private static List<Family> families=new ArrayList<>();
 
     @Override
     public Collection<Family> getAllFamilies() {
@@ -45,12 +44,12 @@ public class DaoFamilyFile implements FamilyDao {
     }
 
     @Override
-    public boolean deleteFamily(Object o) {
+    public boolean deleteFamily(Family family) {
         return false;
     }
 
     @Override
-    public void saveFamily(Object o) {
+    public void saveFamily(Family family) {
 
     }
 
@@ -67,15 +66,4 @@ public class DaoFamilyFile implements FamilyDao {
             throw new RuntimeException("DAO:write:IOException", ex);
         }
     }
-
-
-//    @Override
-//    public boolean deleteFamily(Family family) {
-//        return families.remove(family);
-//    }
-//
-//    @Override
-//    public void saveFamily(Family family) {
-//        families.add(family);
-//    }
 }
