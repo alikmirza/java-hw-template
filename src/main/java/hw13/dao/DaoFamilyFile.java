@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DaoFamilyFile implements FamilyDao<Family> {
-
+    private static List<Family> families;
 
     private File file;
     public DaoFamilyFile(String filename){
@@ -18,13 +18,16 @@ public class DaoFamilyFile implements FamilyDao<Family> {
 
     @Override
     public Collection<Family> getAllFamilies() {
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String json = br.lines().collect(Collectors.joining());
-            List<Family> families = Arrays.asList(new ObjectMapper().readValue(json,Family[].class));
-            return families;
-        } catch (IOException ex) {
-            return new ArrayList<>();
-        }
+//        if (families == null) {
+//            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+//                String json = br.lines().collect(Collectors.joining());
+//                families = Arrays.asList(new ObjectMapper().readValue(json,Family[].class));
+//                return families;
+//            } catch (IOException ex) {
+//                return new ArrayList<>();
+//            }
+//        }
+        return families;
     }
 
     @Override
@@ -61,6 +64,7 @@ public class DaoFamilyFile implements FamilyDao<Family> {
 
     private void write(Collection<Family> families) {
         try (FileWriter oos = new FileWriter(file, false)) {
+            this.families = new ArrayList<>(families);
             oos.append(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(families));
         } catch (IOException ex) {
             throw new RuntimeException("DAO:write:IOException", ex);
